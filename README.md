@@ -19,3 +19,10 @@ Run:
 ```
 make push AUTH_TOKEN="${AUTH_TOKEN}"
 ```
+
+To see these operators in your operator hub, create the included operator source:
+```asciidoc
+oc create -f operator-source.yml
+```
+
+To use your own application source from quay.io, change the value of `registryNamespace` in the operatorSource to your quay.io username.
