@@ -1,4 +1,4 @@
 packageName: amq-streams
 channels:
-  - name: amq-streams
+  - name: integreatly
     currentCSV: integreatly-amqstreams.v1.1.0
