@@ -1,0 +1,205 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    certified: 'false'
+    support: 'Red Hat, Inc.'
+    containerImage: 'registry.access.redhat.com/3scale-amp25/operator-tech-preview'
+    createdAt: '2019-04-30 15:13:01'
+    capabilities: Full Lifecycle
+    categories: Api Management
+    description: >-
+      Red Hat 3scale API Management provides smart, scalable API management.
+  name: 3scale.v0.8.0
+spec:
+  customresourcedefinitions:
+    owned:
+      - name: apis.capabilities.3scale.net
+        version: v1alpha1
+        kind: API
+        displayName: 3scale API
+        description: Represents 3scale api.
+      - name: apimanagers.apps.3scale.net
+        version: v1alpha1
+        kind: APIManager
+        displayName: 3scale API Manager
+        description: Represents 3scale api manager.
+      - name: bindings.capabilities.3scale.net
+        version: v1alpha1
+        kind: Binding
+        displayName: 3scale binding
+        description: Represents 3scale binding.
+      - name: limits.capabilities.3scale.net
+        version: v1alpha1
+        kind: Limit
+        displayName: 3scale limit
+        description: Represents 3scale limit.
+      - name: mappingrules.capabilities.3scale.net
+        version: v1alpha1
+        kind: MappingRule
+        displayName: 3scale Mapping Rule
+        description: Represents 3scale Mapping Rule.
+      - name: metrics.capabilities.3scale.net
+        version: v1alpha1
+        kind: Metric
+        displayName: 3scale Metric
+        description: Represents 3scale Metric.
+      - name: plans.capabilities.3scale.net
+        version: v1alpha1
+        kind: Plan
+        displayName: 3scale Plan
+        description: Represents 3scale Plan.
+      - name: tenants.capabilities.3scale.net
+        version: v1alpha1
+        kind: Tenant
+        displayName: 3scale Tenant
+        description: Represents 3scale Tenant.
+  apiservicedefinitions: {}
+  keywords:
+    - API Management
+  displayName: 3Scale Api Management
+  provider:
+    name: 'Red Hat, Inc.'
+  maturity: stable
+  installModes:
+    - supported: true
+      type: OwnNamespace
+    - supported: true
+      type: SingleNamespace
+    - supported: true
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+  version: 0.8.0
+  icon:
+    - base64data: >-
+        iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAACuFBMVEUAAAB/f39bW1tZWVlZWVlaWlpaWlpaWlpaWlpZWVlfX19VVVVaWlpaWlpaWlpaWlpZWVkAAABZWVlaWlpaWlpYWFhmZmZZWVlcXFxZWVlZWVlZWVlaWlpZWVlaWlpaWlpZWVlZWVlaWlpZWVlmZmZaWlpWVlZaWlpaWlpZWVlaWlpZWVlVVVVaWlpZWVlaWlpZWVlZWVlaWlpZWVlZWVlVVVVaWlpZWVlZWVlZWVlaWlpZWVlZWVlYWFhZWVlaWlpbW1taWlpZWVlaWlpaWlpZWVk/Pz9ZWVlZWVlISEhaWlpZWVlaWlpaWlpaWlpaWlpaWlpaWlpZWVlZWVlXV1daWlpZWVlYWFhbW1taWlpZWVlaWlpaWlpZWVlaWlpZWVlZWVlaWlpaWlpZWVlVVVVaWlpaWlpaWlpZWVlZWVlaWlpZWVlYWFhaWlpZWVlZWVlcXFxaWlpaWlpZWVlZWVlaWlpaWlpaWlpaWlpcXFxZWVlZWVlZWVlaWlpaWlpbW1tZWVlZWVlZWVlaWlpaWlpZWVlaWlpZWVlXV1daWlpZWVlaWlpcXFxZWVlZWVlZWVlZWVlZWVlZWVlZWVlbW1taWlpaWlpZWVlZWVlaWlpaWlpZWVlYWFhZWVlZWVnydADheQDsewbseQbseQbreQfsegjreQjseQjsegjregbseQnreQfseQfseQfsegj/bQDseQnreQfreQfsegfuegjsegbseQjseQjlfwDsegjsegjnfwvqegDregjwewnreQjseQjreQfteQftewzreQjreQfveQfreQb/AADseQjqdwrsegfreQfsegjregjseQfreQfsdwnseQfseQbseQf/fwDregfsegfregfsegdaWlrsegfseQjseQjsegfreQntewXseQfseQfoeQvreQfseQfseQjtegfm7WwfAAAA6HRSTlMAAhpuxfP766c4CAli7v+1KQESlvlLChQLjvdJQ4xdXuRq/MAFHhfX/qBB6QaEvbqzfi9X8AMPdvLTPK71bajaDuX9I1BFBOGYBxHHTKQzkOc7+sIg1ihbcPhH9rhnqjFZ3QzQFTTDJsvfQLFCUnmsFomBZGDJzS1ULLaAkp6yHJRy46lzmyLmOmY2TiHV2NudouyGGT7o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
+      mediatype: image/png
+  minKubeVersion: 1.9.0
+  links:
+    - name: Product Page
+      url: 'https://access.redhat.com/products/red-hat-3scale/'
+    - name: Documentation
+      url: >-
+        https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.5/
+  install:
+    spec:
+      clusterPermissions:
+        - rules:
+          - apiGroups:
+              - ""
+            resources:
+              - pods
+              - services
+              - endpoints
+              - persistentvolumeclaims
+              - events
+              - configmaps
+              - secrets
+              - serviceaccounts
+              # For some reason there's an error creating serviceaccounts
+              # if you do not include permissions to bindings/finalizers.
+              # A related PR to this problem is:
+              # https://github.com/openshift/origin/pull/16253
+              - bindings/finalizers
+            verbs:
+              - '*'
+          - apiGroups:
+              - apps
+            resources:
+              - deployments
+              - daemonsets
+              - replicasets
+              - statefulsets
+            verbs:
+              - '*'
+          - apiGroups:
+              - image.openshift.io
+            resources:
+              - imagestreams
+              - imagestreams/layers
+            verbs:
+              - '*'
+          - apiGroups:
+              - route.openshift.io
+            resources:
+              - routes
+              - routes/custom-host
+              - routes/status
+            verbs:
+              - '*'
+          - apiGroups:
+              - apps.openshift.io
+            resources:
+              - deploymentconfigs
+            verbs:
+              - '*'
+          - apiGroups:
+              - monitoring.coreos.com
+            resources:
+              - servicemonitors
+            verbs:
+              - get
+              - create
+          - apiGroups:
+              - apps.3scale.net
+            resources:
+              - '*'
+            verbs:
+              - '*'
+          - apiGroups:
+              - capabilities.3scale.net
+            resources:
+              - '*'
+              - bindings
+              - metrics
+              - plans
+              - limits
+              - mappingrules
+              - tenants
+            verbs:
+              - '*'
+          serviceAccountName: 3scale-operator
+      deployments:
+        - name: 3scale-operator
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                name: 3scale-operator
+            strategy:
+              type: Recreate
+            template:
+              metadata:
+                labels:
+                  name: 3scale-operator
+              spec:
+                containers:
+                  - name: 3scale-operator
+                    image: registry.access.redhat.com/3scale-amp25/operator-tech-preview
+                    command:
+                      - 3scale-operator
+                    imagePullPolicy: Always
+                    env:
+                      - name: WATCH_NAMESPACE
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.namespace
+                      - name: POD_NAME
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.name
+                      - name: OPERATOR_NAME
+                        value: "3scale-operator"
+                serviceAccountName: 3scale-operator
+    strategy: deployment
+  maintainers:
+    - email: customerservice@redhat.com
+      name: 'Red Hat, Inc.'
+  description: >
+    Red Hat 3scale API Management provides smart, scalable API management.
+  selector:
+    matchLabels:
+      name: 3scale-operator
+  labels:
+    name: 3scale-operator
