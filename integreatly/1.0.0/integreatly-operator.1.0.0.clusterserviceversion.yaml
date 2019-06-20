@@ -87,6 +87,7 @@ spec:
                 - subscriptions
                 - operatorgroups
                 - catalogsourceconfigs
+                - installplans
               verbs:
                 - list
                 - create
