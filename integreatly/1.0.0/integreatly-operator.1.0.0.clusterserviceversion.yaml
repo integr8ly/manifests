@@ -82,6 +82,14 @@ spec:
                 - get
                 - create
             - apiGroups:
+                - aerogear.org
+              resources:
+                - keycloaks
+                - keycloakrealms
+              verbs:
+                - get
+                - create
+            - apiGroups:
                 - operators.coreos.com
               resources:
                 - subscriptions
