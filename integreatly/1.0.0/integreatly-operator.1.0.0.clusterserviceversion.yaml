@@ -89,6 +89,7 @@ spec:
                 - catalogsourceconfigs
               verbs:
                 - list
+                - get
                 - create
                 - watch
       permissions:
