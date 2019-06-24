@@ -69,23 +69,8 @@ spec:
                 - create
                 - watch
             - apiGroups:
-                - ""
-              resources:
-                - pods
-              verbs:
-                - list
-            - apiGroups:
-                - kafka.strimzi.io
-              resources:
-                - kafkas
-              verbs:
-                - get
-                - create
-            - apiGroups:
                 - operators.coreos.com
               resources:
-                - subscriptions
-                - operatorgroups
                 - catalogsourceconfigs
               verbs:
                 - list
@@ -142,6 +127,15 @@ spec:
                 - "*"
               verbs:
                 - "*"
+            - apiGroups:
+                - operators.coreos.com
+              resources:
+                - operatorgroups
+                - subscriptions
+              verbs:
+                - list
+                - create
+                - watch
       deployments:
         - name: integreatly-operator
           spec:
