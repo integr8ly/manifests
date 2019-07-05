@@ -7,7 +7,7 @@ metadata:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: docker.io/integreatly/integreatly-operator:v1.0.0
+    containerImage: quay.io/integreatly/integreatly-operator:v1.0.0
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -76,6 +76,69 @@ spec:
                 - list
                 - create
                 - watch
+            - apiGroups:
+                - ""
+              resources:
+                - pods
+                - secrets
+              verbs:
+                - list
+                - get
+            - apiGroups:
+                - operators.coreos.com
+              resources:
+                - catalogsourceconfigs/finalizers
+              verbs:
+                - '*'
+            - apiGroups:
+                - operators.coreos.com
+              resources:
+                - operatorgroups
+                - subscriptions
+                - installplans
+              verbs:
+                - list
+                - create
+                - watch
+                - get
+            - apiGroups:
+                - aerogear.org
+              resources:
+                - keycloaks
+                - keycloakrealms
+              verbs:
+                - list
+                - create
+                - update
+                - watch
+                - get
+            - apiGroups:
+                - kafka.strimzi.io
+              resources:
+                - kafkas
+              verbs:
+                - list
+                - create
+                - watch
+                - get
+            - apiGroups:
+                - apps.3scale.net
+              resources:
+                - apimanagers
+              verbs:
+                - list
+                - create
+                - watch
+                - get
+            - apiGroups:
+                - org.eclipse.che
+              resources:
+                - checlusters
+              verbs:
+                - list
+                - create
+                - watch
+                - get
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
@@ -127,15 +190,6 @@ spec:
                 - "*"
               verbs:
                 - "*"
-            - apiGroups:
-                - operators.coreos.com
-              resources:
-                - operatorgroups
-                - subscriptions
-              verbs:
-                - list
-                - create
-                - watch
       deployments:
         - name: integreatly-operator
           spec:
