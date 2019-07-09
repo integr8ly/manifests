@@ -1,0 +1,4 @@
+packageName: codeready-workspaces
+channels:
+- name: integreatly
+  currentCSV: crwoperator.v1.2.2
