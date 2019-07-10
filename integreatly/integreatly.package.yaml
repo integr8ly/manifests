@@ -2,5 +2,3 @@ packageName: integreatly
 channels:
   - name: integreatly
     currentCSV: integreatlyoperator.1.0.1
-  - name: integreatly-prod
-    currentCSV: integreatlyoperator.1.0.0
