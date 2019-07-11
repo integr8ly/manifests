@@ -1,12 +1,12 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: keycloakoperator.1.4.0
+  name: keycloakoperator.1.6.1
   namespace: placeholder
   annotations:
     certified: 'false'
     support: 'Red Hat, Inc.'
-    containerImage: 'quay.io/integreatly/keycloak-operator:v1.4.0'
+    containerImage: 'quay.io/integreatly/keycloak-operator:v1.6.1'
     createdAt: '2019-05-02 11:45:00'
     alm-examples: >-
       []
@@ -18,7 +18,7 @@ spec:
   displayName: Red Hat Single Sign-On
   description: Red Hat Single Sign-On provides Web single sign-on and identity federation based on SAML 2.0, OpenID Connect and OAuth 2.0 specifications.
   keywords: ['RHSSO', 'keycloak', 'aerogear']
-  version: 1.4.0
+  version: 1.6.1
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
@@ -175,7 +175,7 @@ spec:
                 serviceAccountName: keycloak-operator
                 containers:
                   - name: keycloak-operator
-                    image: quay.io/integreatly/keycloak-operator:v1.4.0
+                    image: quay.io/integreatly/keycloak-operator:v1.6.1
                     ports:
                       - containerPort: 60000
                         name: metrics

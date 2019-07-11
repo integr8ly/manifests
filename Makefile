@@ -2,10 +2,10 @@ REPO=integreatly
 INTEGREATLY_VERSION=1.0.1
 3SCALE_VERSION=0.8.0
 AMQSTREAMS_VERSION=1.1.0
-RHSSO_VERSION=1.4.0
+RHSSO_VERSION=1.6.1
 CODEREADY_VERSION=1.2.2
 
-push/all: push/integreatly push/amqstreams push/3scale
+push/all: push/integreatly push/amqstreams push/3scale push/rhsso push/codeready
 
 push/integreatly:
 	operator-courier verify integreatly
