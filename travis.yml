@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - 1.10.x
+
+stages:
+  - push
+
+branches:
+  only:
+    - master
+jobs:
+  include:
+    - stage: push
+      script:
+        - cd $HOME/gopath/src/github.com/integr8ly/manifests && make push/all AUTH_TOKEN="$(make token/generate QUAY_USERNAME=${QUAY_USERNAME} QUAY_PASSWORD=${QUAY_PASSWORD})"
