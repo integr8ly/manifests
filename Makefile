@@ -1,3 +1,4 @@
+AMQONLINE_VERSION=0.28.0
 INTEGREATLY_VERSION=1.1.0
 3SCALE_VERSION=0.8.0
 AMQSTREAMS_VERSION=1.1.0
@@ -7,7 +8,7 @@ FUSE_VERSION=1.7.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready
+push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline
 
 push/integreatly:
 	operator-courier verify integreatly
@@ -32,3 +33,7 @@ push/codeready:
 push/fuse:
 	operator-courier verify fuse
 	-operator-courier push fuse/ $(REPO) syndesis $(FUSE_VERSION) "$(AUTH_TOKEN)"
+
+push/amqonline:
+	operator-courier verify amq-online
+	operator-courier push amq-online/ $(REPO) amq-online "$(AUTH_TOKEN)"
