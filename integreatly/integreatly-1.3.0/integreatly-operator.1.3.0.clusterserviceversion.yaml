@@ -205,6 +205,15 @@ spec:
                 - get
                 - create
                 - update
+            - apiGroups:
+              - gpte.opentlc.com
+              resources:
+              - nexus
+              verbs:
+              - list
+              - create
+              - watch
+              - get
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
