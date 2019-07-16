@@ -4,8 +4,9 @@ INTEGREATLY_VERSION=1.0.1
 AMQSTREAMS_VERSION=1.1.0
 RHSSO_VERSION=1.6.1
 CODEREADY_VERSION=1.2.2
+FUSE_VERSION=1.7.0
 
-push/all: push/integreatly push/amqstreams push/3scale push/rhsso push/codeready
+push/all: push/integreatly push/amqstreams push/3scale push/fuse push/codeready
 
 push/integreatly:
 	operator-courier verify integreatly
@@ -30,3 +31,7 @@ push/codeready:
 
 token/generate:
 	@curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token'
+
+push/fuse:
+	operator-courier verify fuse
+	operator-courier push fuse/ $(REPO) syndesis $(FUSE_VERSION) "$(AUTH_TOKEN)"
