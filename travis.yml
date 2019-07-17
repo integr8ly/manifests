@@ -4,11 +4,9 @@ go:
   - 1.10.x
 
 stages:
-  - push
+  - name: push
+    if: fork = false AND branch = master
 
-branches:
-  only:
-    - master
 jobs:
   include:
     - stage: push
