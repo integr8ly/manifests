@@ -13,5 +13,4 @@ jobs:
       script:
         - curl -L https://git.io/get_helm.sh | bash
         - pip3 install operator-courier
-        - cd $HOME/gopath/src/github.com/integr8ly/manifests
         - make push/all QUAY_USERNAME="${QUAY_USERNAME}" QUAY_PASSWORD="${QUAY_PASSWORD}" REPO="integreatly"
