@@ -6,6 +6,7 @@ CODEREADY_VERSION=1.2.2
 FUSE_VERSION=1.7.0
 
 push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready
+	true
 
 push/integreatly:
 	operator-courier verify integreatly
