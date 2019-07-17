@@ -1,7 +1,7 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: integreatlyoperator.1.0.1
+  name: integreatlyoperator.1.0.2
   namespace: placeholder
   annotations:
     alm-examples: "{}"
@@ -16,7 +16,7 @@ spec:
   displayName: Integreatly
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
-  version: 1.0.1
+  version: 1.0.2
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
@@ -65,6 +65,7 @@ spec:
               resources:
                 - namespaces
               verbs:
+                - get
                 - list
                 - create
                 - watch
