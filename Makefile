@@ -30,4 +30,4 @@ push/codeready:
 
 push/fuse:
 	operator-courier verify fuse
-	operator-courier push fuse/ $(REPO) syndesis $(FUSE_VERSION) "$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')"
+	-operator-courier push fuse/ $(REPO) syndesis $(FUSE_VERSION) "$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')"
