@@ -37,8 +37,6 @@ spec:
                 - managed
             namespacePrefix:
               type: string
-            createNamespaces:
-              type: boolean
             selfSignedCerts:
               type: boolean
           required:
