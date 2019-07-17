@@ -163,6 +163,19 @@ spec:
                 - create
                 - watch
                 - get
+            - apiGroups:
+              - admin.enmasse.io
+              resources:
+              - authenticationservices
+              - addressplans
+              - addressspaceplans
+              - brokeredinfraconfigs
+              - standardinfraconfigs
+              verbs:
+              - list
+              - create
+              - watch
+              - get
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
