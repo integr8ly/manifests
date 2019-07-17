@@ -7,7 +7,7 @@ Do not push these manifests to the integreatly repo, ever, as these manifests ca
 
 Run (**N.B. REPO must always be set, and never set to "integreatly"**):
 ```
-make push/<product|all> REPO=<your quay.io username> AUTH_TOKEN="$(make token/generate QUAY_USERNAME=<username> QUAY_PASSWORD=<password>)"
+make push/<product|all> REPO="<quay username>" QUAY_USERNAME="<username>" QUAY_PASSWORD="<password>"
 ```
 
 To see these operators in your operator hub, create the included operator source:

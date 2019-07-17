@@ -8,4 +8,5 @@ jobs:
   include:
     - stage: push
       script:
-        - cd $HOME/gopath/src/github.com/integr8ly/manifests && make push/all AUTH_TOKEN="$(make token/generate QUAY_USERNAME=${QUAY_USERNAME} QUAY_PASSWORD=${QUAY_PASSWORD}) REPO=integreatly"
+        - cd $HOME/gopath/src/github.com/integr8ly/manifests
+        - make push/all QUAY_USERNAME="${QUAY_USERNAME}" QUAY_PASSWORD="${QUAY_PASSWORD}" REPO="integreatly"
