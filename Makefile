@@ -36,4 +36,4 @@ push/fuse:
 
 push/amqonline:
 	operator-courier verify amq-online
-	operator-courier push amq-online/ $(REPO) amq-online "$(AUTH_TOKEN)"
+	operator-courier push amq-online/ $(REPO) amq-online $(AMQONLINE_VERSION) "$(AUTH_TOKEN)"
