@@ -18,7 +18,7 @@ metadata:
     description: >-
       Red Hat AMQ Streams is a massively scalable, distributed, and high
       performance data streaming platform based on Apache Kafka®.
-  name: integreatly-amqstreams.v1.1.0
+  name: amqstreams.v1.1.0
 spec:
   customresourcedefinitions:
     owned:
