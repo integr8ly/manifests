@@ -83,11 +83,13 @@ spec:
                 - operators.coreos.com
               resources:
                 - catalogsourceconfigs
+                - catalogsourceconfigs/finalizers
               verbs:
                 - list
                 - create
                 - watch
                 - delete
+            # Allow us to check that some services are running as their CRs do not have a good status field. The secrets permission is too permissive need to revisit    
             - apiGroups:
                 - ""
               resources:
@@ -96,12 +98,7 @@ spec:
               verbs:
                 - list
                 - get
-            - apiGroups:
-                - operators.coreos.com
-              resources:
-                - catalogsourceconfigs/finalizers
-              verbs:
-                - '*'
+            # Allow for setting up and checking installation of product operators in the namespaces we create    
             - apiGroups:
                 - operators.coreos.com
               resources:
@@ -114,6 +111,7 @@ spec:
                 - watch
                 - get
                 - delete
+            #Allow us to manage keycloak resources in any namespace we create    
             - apiGroups:
                 - aerogear.org
               resources:
@@ -125,6 +123,7 @@ spec:
                 - update
                 - watch
                 - get
+            #Allow us to manage strimzi resources in any namespace we create                    
             - apiGroups:
                 - kafka.strimzi.io
               resources:
@@ -134,6 +133,7 @@ spec:
                 - create
                 - watch
                 - get
+            #Allow us to manage 3scale resources in any namespace we create                    
             - apiGroups:
                 - apps.3scale.net
               resources:
@@ -143,6 +143,7 @@ spec:
                 - create
                 - watch
                 - get
+            #Allow us to manage che resources in any namespace we create                    
             - apiGroups:
                 - org.eclipse.che
               resources:
@@ -153,6 +154,7 @@ spec:
                 - create
                 - watch
                 - get
+            #Allow us to manage syndesis resources in any namespace we create                    
             - apiGroups:
                 - syndesis.io
               resources:
@@ -163,6 +165,7 @@ spec:
                 - create
                 - watch
                 - get
+            #Allow us to manage AMQ Online resources in any namespace we create                    
             - apiGroups:
                 - admin.enmasse.io
               resources:
@@ -177,6 +180,7 @@ spec:
                 - create
                 - watch
                 - get
+            #Allow us to create oauth clients (Note could be limited further by using named resources)
             - apiGroups:
                 - oauth.openshift.io
               resources:
@@ -184,6 +188,7 @@ spec:
               verbs:
                 - create
                 - get
+            #Allow us to get and update configmaps (Note seems overly permissive need to revisit)                
             - apiGroups:
                 - ''
               resources:
@@ -191,6 +196,7 @@ spec:
               verbs:
                 - get
                 - update
+            # Not sure why we need this one need to revisit    
             - apiGroups:
                 - apps.openshift.io
               resources:
