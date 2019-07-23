@@ -1,13 +1,13 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: integreatlyoperator.1.2.0
+  name: integreatlyoperator.1.3.0
   namespace: placeholder
   annotations:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: quay.io/integreatly/integreatly-operator:v1.2.0
+    containerImage: quay.io/integreatly/integreatly-operator:v1.3.0
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -16,7 +16,7 @@ spec:
   displayName: Integreatly
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
-  version: 1.2.0
+  version: 1.3.0
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
@@ -66,7 +66,7 @@ spec:
                 - "*"
               verbs:
                 - "*"
-# This is used to allow the operator to setup the ns needed for each product
+            # This is used to allow the operator to setup the ns needed for each product
             - apiGroups:
                 - ""
               resources:
@@ -78,7 +78,7 @@ spec:
                 - watch
                 - get
                 - update
-# This is used to allow the operator to setup catalog source config and remove it if needed.
+            # This is used to allow the operator to setup catalog source config and remove it if needed.
             - apiGroups:
                 - operators.coreos.com
               resources:
@@ -164,18 +164,47 @@ spec:
                 - watch
                 - get
             - apiGroups:
-              - admin.enmasse.io
+                - admin.enmasse.io
               resources:
-              - authenticationservices
-              - addressplans
-              - addressspaceplans
-              - brokeredinfraconfigs
-              - standardinfraconfigs
+                - authenticationservices
+                - addressplans
+                - addressspaceplans
+                - brokeredinfraconfigs
+                - standardinfraconfigs
+                - consoleservices
               verbs:
-              - list
-              - create
-              - watch
-              - get
+                - list
+                - create
+                - watch
+                - get
+            - apiGroups:
+                - oauth.openshift.io
+              resources:
+                - oauthclients
+              verbs:
+                - create
+                - get
+            - apiGroups:
+                - ''
+              resources:
+                - configmaps
+              verbs:
+                - get
+                - update
+            - apiGroups:
+                - apps.openshift.io
+              resources:
+                - deploymentconfigs/instantiate
+              verbs:
+                - create
+            - apiGroups:
+                - ""
+              resources:
+                - secrets
+              verbs:
+                - get
+                - create
+                - update
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
@@ -245,7 +274,7 @@ spec:
                   - name: integreatly-operator
                     command:
                       - integreatly-operator
-                    image: quay.io/integreatly/integreatly-operator:v1.2.0
+                    image: quay.io/integreatly/integreatly-operator:v1.3.0
                     imagePullPolicy: Always
                     env:
                       - name: MY_POD_NAMESPACE

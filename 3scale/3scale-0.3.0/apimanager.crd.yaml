@@ -58,8 +58,6 @@ spec:
               type: object
             imageStreamTagImportInsecure:
               type: boolean
-            productVersion:
-              type: string
             resourceRequirementsEnabled:
               type: boolean
             system:
@@ -85,16 +83,16 @@ spec:
                         awsBucket:
                           type: string
                         awsCredentialsSecret:
+                          properties:
+                            name:
+                              type: string
                           type: object
                         awsRegion:
                           type: string
-                        fileUploadStorage:
-                          type: string
                       required:
-                      - awsBucket
-                      - awsRegion
-                      - awsCredentialsSecret
-                      - fileUploadStorage
+                        - awsBucket
+                        - awsRegion
+                        - awsCredentialsSecret
                       type: object
                     persistentVolumeClaim:
                       description: Union type. Only one of the fields can be set.
@@ -114,13 +112,6 @@ spec:
               type: string
             wildcardDomain:
               type: string
-            wildcardPolicy:
-              type: string
-            wildcardRouter:
-              properties:
-                image:
-                  type: string
-              type: object
             zync:
               properties:
                 image:
@@ -129,8 +120,7 @@ spec:
                   type: string
               type: object
           required:
-          - productVersion
-          - wildcardDomain
+            - wildcardDomain
           type: object
         status:
           properties:
@@ -142,13 +132,34 @@ spec:
                   type:
                     type: string
                 required:
-                - type
-                - status
+                  - type
+                  - status
                 type: object
               type: array
+            deployments:
+              properties:
+                ready:
+                  description: Deployments are ready to serve requests
+                  items:
+                    type: string
+                  type: array
+                starting:
+                  description: Deployments are starting, may or may not succeed
+                  items:
+                    type: string
+                  type: array
+                stopped:
+                  description: Deployments are not starting, unclear what next step
+                    will be
+                  items:
+                    type: string
+                  type: array
+              type: object
+          required:
+            - deployments
           type: object
   version: v1alpha1
   versions:
-  - name: v1alpha1
-    served: true
-    storage: true
+    - name: v1alpha1
+      served: true
+      storage: true

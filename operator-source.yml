@@ -1,8 +1,6 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorSource
 metadata:
-  finalizers:
-    - finalizer.operatorsources.operators.coreos.com
   name: integreatly-operators
   namespace: openshift-marketplace
 spec:
