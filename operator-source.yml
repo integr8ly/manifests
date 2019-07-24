@@ -8,5 +8,5 @@ spec:
   displayName: Integreatly Operators
   endpoint: 'https://quay.io/cnr'
   publisher: Integreatly Publisher
-  registryNamespace: integreatly
+  registryNamespace: maleck13
   type: appregistry
