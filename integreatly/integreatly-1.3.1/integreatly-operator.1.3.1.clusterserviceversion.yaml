@@ -1,13 +1,13 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: integreatlyoperator.1.3.0
+  name: integreatlyoperator.1.3.1
   namespace: placeholder
   annotations:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: quay.io/integreatly/integreatly-operator:v1.3.0
+    containerImage: quay.io/integreatly/integreatly-operator:v1.3.1
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -16,7 +16,7 @@ spec:
   displayName: Integreatly
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
-  version: 1.3.0
+  version: 1.3.1
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
@@ -205,6 +205,15 @@ spec:
                 - get
                 - create
                 - update
+            - apiGroups:
+              - gpte.opentlc.com
+              resources:
+              - nexus
+              verbs:
+              - list
+              - create
+              - watch
+              - get
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
@@ -274,7 +283,7 @@ spec:
                   - name: integreatly-operator
                     command:
                       - integreatly-operator
-                    image: quay.io/integreatly/integreatly-operator:v1.3.0
+                    image: quay.io/integreatly/integreatly-operator:v1.3.1
                     imagePullPolicy: Always
                     env:
                       - name: MY_POD_NAMESPACE
