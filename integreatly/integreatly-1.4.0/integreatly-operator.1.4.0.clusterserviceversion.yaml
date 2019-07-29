@@ -1,13 +1,13 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: integreatlyoperator.1.3.1
+  name: integreatlyoperator.1.4.0
   namespace: placeholder
   annotations:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: quay.io/integreatly/integreatly-operator:v1.3.1
+    containerImage: quay.io/integreatly/integreatly-operator:v1.4.0
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -16,7 +16,7 @@ spec:
   displayName: Integreatly
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
-  version: 1.3.1
+  version: 1.4.0
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
@@ -60,6 +60,37 @@ spec:
       clusterPermissions:
         - serviceAccountName: integreatly-operator
           rules:
+            ## start backup permissions
+            - apiGroups:
+                - batch
+              resources:
+                - cronjobs
+              verbs:
+                - create
+                - update
+            - apiGroups:
+                - "rbac.authorization.k8s.io"
+              resources:
+                - "clusterroles"
+                - "clusterrolebindings"
+              verbs:
+                - create
+                - update
+            - apiGroups:
+                - "*"
+              resources:
+                - "*"
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - ""
+              resources:
+                - "pods/exec"
+              verbs:
+                - create
+                - update
+              ## end backup permissions
             - apiGroups:
                 - "integreatly.org"
               resources:
@@ -72,6 +103,7 @@ spec:
               resources:
                 - namespaces
                 - namespaces/finalizers
+                - "serviceaccounts"
               verbs:
                 - list
                 - create
@@ -283,7 +315,7 @@ spec:
                   - name: integreatly-operator
                     command:
                       - integreatly-operator
-                    image: quay.io/integreatly/integreatly-operator:v1.3.1
+                    image: quay.io/integreatly/integreatly-operator:v1.4.0
                     imagePullPolicy: Always
                     env:
                       - name: MY_POD_NAMESPACE
