@@ -1,0 +1,4 @@
+channels:
+- currentCSV: tutorial-web-app-operator.v0.0.21
+  name: integreatly
+packageName: tutorial-web-app
