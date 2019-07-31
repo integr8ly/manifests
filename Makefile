@@ -1,5 +1,5 @@
 AMQONLINE_VERSION=0.28.0
-INTEGREATLY_VERSION=1.5.0
+INTEGREATLY_VERSION=1.5.1
 3SCALE_VERSION=0.3.0
 AMQSTREAMS_VERSION=1.1.0
 RHSSO_VERSION=1.7.0
@@ -10,7 +10,7 @@ TUTORIAL_WEB_APP_VERSION=0.0.21
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/tutorial-web-app
+push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/solution-explorer
 
 push/integreatly:
 	operator-courier verify integreatly
@@ -44,6 +44,6 @@ push/nexus:
 	operator-courier verify nexus
 	-operator-courier push nexus/ $(REPO) nexus $(NEXUS_VERSION) "$(AUTH_TOKEN)"
 
-push/tutorial-web-app:
-	operator-courier verify tutorial-web-app
-	-operator-courier push tutorial-web-app/ $(REPO) tutorial-web-app $(TUTORIAL_WEB_APP_VERSION) "$(AUTH_TOKEN)"
+push/solution-explorer:
+	operator-courier verify solution-explorer
+	-operator-courier push solution-explorer/ $(REPO) solution-explorer $(TUTORIAL_WEB_APP_VERSION) "$(AUTH_TOKEN)"
