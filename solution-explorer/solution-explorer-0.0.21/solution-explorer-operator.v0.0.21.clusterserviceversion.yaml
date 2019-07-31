@@ -3,7 +3,7 @@ kind: ClusterServiceVersion
 metadata:
   annotations:
     capabilities: Basic Install
-  name: tutorial-web-app-operator.v0.0.21
+  name: solution-explorer-operator.v0.0.21
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
