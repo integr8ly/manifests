@@ -1,4 +1,4 @@
-packageName: nexus
+packageName: integreatly-nexus
 channels:
   - name: integreatly
     currentCSV: nexus-operator.v0.8.1

@@ -1,4 +1,4 @@
-packageName: syndesis
+packageName: integreatly-syndesis
 channels:
 - name: integreatly
   currentCSV: syndesisoperator.1.7.0
