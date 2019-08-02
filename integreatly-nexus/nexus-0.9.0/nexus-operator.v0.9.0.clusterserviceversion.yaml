@@ -6,10 +6,10 @@ metadata:
     capabilities: Repository management
     categories: Repository management
     certified: 'false'
-    containerImage: quay.io/wkulhanek/nexus-operator:v0.8.1
+    containerImage: quay.io/gpte-devops-automation/nexus-operator:v0.9.0
     createdAt: 2019-04-30 12:39:00
     description: The world's best way to organize, store, and distribute software components.
-  name: nexus-operator.v0.8.1
+  name: nexus-operator.v0.9.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -124,7 +124,7 @@ spec:
                 - /usr/local/bin/ao-logs
                 - /tmp/ansible-operator/runner
                 - stdout
-                image: quay.io/wkulhanek/nexus-operator:v0.8.1
+                image: quay.io/gpte-devops-automation/nexus-operator:v0.9.0
                 imagePullPolicy: Always
                 name: ansible
                 resources: {}
@@ -143,7 +143,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: userquota-operator
-                image: quay.io/wkulhanek/nexus-operator:v0.8.1
+                image: quay.io/gpte-devops-automation/nexus-operator:v0.9.0
                 imagePullPolicy: Always
                 name: operator
                 resources: {}
@@ -166,4 +166,4 @@ spec:
     type: AllNamespaces
   maturity: alpha
   provider: {}
-  version: 0.8.1
+  version: 0.9.0
