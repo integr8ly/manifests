@@ -6,7 +6,7 @@ RHSSO_VERSION=1.7.4
 CODEREADY_VERSION=1.2.2
 FUSE_VERSION=1.7.0
 NEXUS_VERSION=0.9.0
-TUTORIAL_WEB_APP_VERSION=0.0.21
+TUTORIAL_WEB_APP_VERSION=0.0.25
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
