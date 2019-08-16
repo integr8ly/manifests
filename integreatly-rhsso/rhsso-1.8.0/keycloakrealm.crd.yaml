@@ -88,10 +88,6 @@ spec:
                       type: string
                   outputSecret:
                     type: string
-                  federatedIdentities:
-                    type: array
-                    items:
-                      type: object
             clients:
               type: array
               items:
