@@ -17,7 +17,7 @@ spec:
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
   version: 1.6.0
-  replaces: integreatlyoperator.1.5.9
+  replaces: integreatlyoperator.1.5.11
   maturity: alpha
   minKubeVersion: 1.11.0
   maintainers:
