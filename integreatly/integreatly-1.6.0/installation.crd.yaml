@@ -43,8 +43,6 @@ spec:
               type: string
             masterUrl:
               type: string
-            apiUrl:
-              type: string
           required:
             - type
         status:
