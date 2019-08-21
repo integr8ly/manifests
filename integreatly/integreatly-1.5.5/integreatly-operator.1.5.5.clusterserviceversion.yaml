@@ -18,7 +18,6 @@ spec:
   keywords: ['integreatly']
   version: 1.5.5
   maturity: alpha
-  replaces: integreatlyoperator.1.5.3
   minKubeVersion: 1.11.0
   maintainers:
     - name: Integr8ly
