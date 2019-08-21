@@ -53,6 +53,8 @@ spec:
                     type: string
                   postBrokerLoginFlowAlias:
                     type: string
+                  linkOnly:
+                    type: boolean
                   config:
                     type: object
             users:
@@ -88,6 +90,10 @@ spec:
                       type: string
                   outputSecret:
                     type: string
+                  federatedIdentities:	
+                    type: array	
+                    items:	
+                      type: object
             clients:
               type: array
               items:
