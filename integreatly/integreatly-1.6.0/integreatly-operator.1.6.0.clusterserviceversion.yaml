@@ -11,14 +11,13 @@ metadata:
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
-
 spec:
   displayName: Integreatly
   description: Integreatly installation and reconciliation operator
   keywords: ['integreatly']
   version: 1.6.0
-  replaces: integreatlyoperator.1.5.11
   maturity: alpha
+  replaces: integreatlyoperator.1.5.11
   minKubeVersion: 1.11.0
   maintainers:
     - name: Integr8ly
@@ -229,8 +228,10 @@ spec:
                 - apps.openshift.io
               resources:
                 - deploymentconfigs/instantiate
+                - deploymentconfigs #needed for editing fuse oauth proxy
               verbs:
                 - create
+                - update #needed for editing fuse oauth proxy
             - apiGroups:
                 - ""
               resources:
@@ -255,6 +256,13 @@ spec:
               verbs:
                 - get
                 - create
+            - apiGroups:
+                - "rbac.authorization.k8s.io"
+              resources:
+                - "rolebindings"
+              verbs:
+                - create #needed for creating rolebinding for dedicated-admins to view fuse
+                - update #needed for updating subject list to match changes to dedicated-admins users
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
