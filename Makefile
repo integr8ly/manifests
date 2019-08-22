@@ -6,7 +6,7 @@ RHSSO_VERSION=1.8.2
 CODEREADY_VERSION=1.2.2
 FUSE_VERSION=1.7.0
 NEXUS_VERSION=0.9.0
-TUTORIAL_WEB_APP_VERSION=0.0.25
+TUTORIAL_WEB_APP_VERSION=0.0.27
 LAUNCHER_VERSION=0.1.2
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
@@ -44,7 +44,7 @@ push/fuse:
 push/amqonline:
 	operator-courier verify integreatly-amq-online
 	-operator-courier push integreatly-amq-online/ $(REPO) integreatly-amq-online $(AMQONLINE_VERSION) "$(AUTH_TOKEN)"
-	
+
 push/nexus:
 	operator-courier verify integreatly-nexus
 	-operator-courier push integreatly-nexus/ $(REPO) integreatly-nexus $(NEXUS_VERSION) "$(AUTH_TOKEN)"
