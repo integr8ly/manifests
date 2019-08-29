@@ -7,7 +7,7 @@ metadata:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: quay.io/austincunningham/integreatly-operator:v1.8.0
+    containerImage: quay.io/integreatly/integreatly-operator:v1.8.0
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -17,7 +17,7 @@ spec:
   keywords: ['integreatly']
   version: 1.8.0
   maturity: alpha
-  replaces: integreatlyoperator.1.7.1
+  replaces: integreatlyoperator.1.7.2
   minKubeVersion: 1.11.0
   maintainers:
     - name: Integr8ly
@@ -263,6 +263,22 @@ spec:
               verbs:
                 - create #needed for creating rolebinding for dedicated-admins to view fuse
                 - update #needed for updating subject list to match changes to dedicated-admins users
+            # This is used to allow the operator to create and update the rhmi-developers group with users
+            - apiGroups:
+                - user.openshift.io
+              resources:
+                - users
+              verbs:
+                - watch
+            - apiGroups:
+                - user.openshift.io
+              resources:
+                - groups
+              verbs:
+                - get
+                - create
+                - update
+            # rhmi-developers group ends
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
@@ -332,7 +348,7 @@ spec:
                   - name: integreatly-operator
                     command:
                       - integreatly-operator
-                    image: quay.io/austincunningham/integreatly-operator:v1.8.0
+                    image: quay.io/integreatly/integreatly-operator:v1.8.0
                     imagePullPolicy: Always
                     env:
                       - name: MY_POD_NAMESPACE
