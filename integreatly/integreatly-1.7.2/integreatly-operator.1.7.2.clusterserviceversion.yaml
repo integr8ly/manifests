@@ -263,6 +263,22 @@ spec:
               verbs:
                 - create #needed for creating rolebinding for dedicated-admins to view fuse
                 - update #needed for updating subject list to match changes to dedicated-admins users
+            # This is used to allow the operator to create and update the rhmi-developers group with users
+            - apiGroups:
+                - user.openshift.io
+              resources:
+                - users
+              verbs:
+                - watch
+            - apiGroups:
+                - user.openshift.io
+              resources:
+                - groups
+              verbs:
+                - get
+                - create
+                - update
+            # rhmi-developers group ends
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
