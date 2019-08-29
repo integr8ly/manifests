@@ -7,7 +7,7 @@ metadata:
     alm-examples: "{}"
     categories: Integreating greatly
     certified: 'false'
-    containerImage: quay.io/integreatly/integreatly-operator:v1.8.0
+    containerImage: quay.io/austincunningham/integreatly-operator:v1.8.0
     createdAt: 2019-04-30 12:39:00
     support: Integreatly
     description: Greatly integrating integreatly greatness
@@ -332,7 +332,7 @@ spec:
                   - name: integreatly-operator
                     command:
                       - integreatly-operator
-                    image: quay.io/integreatly/integreatly-operator:v1.8.0
+                    image: quay.io/austincunningham/integreatly-operator:v1.8.0
                     imagePullPolicy: Always
                     env:
                       - name: MY_POD_NAMESPACE
