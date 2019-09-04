@@ -4,7 +4,7 @@ INTEGREATLY_VERSION=1.8.0
 AMQSTREAMS_VERSION=1.1.0
 RHSSO_VERSION=1.8.2
 CODEREADY_VERSION=1.2.2
-FUSE_VERSION=7.4.0
+FUSEONLINE_VERSION=7.4.0
 NEXUS_VERSION=0.9.0
 TUTORIAL_WEB_APP_VERSION=0.0.27
 LAUNCHER_VERSION=0.1.2
@@ -39,7 +39,7 @@ push/codeready:
 
 push/fuse:
 	operator-courier verify integreatly-fuse
-	-operator-courier push integreatly-fuse/ $(REPO) integreatly-syndesis $(FUSE_VERSION) "$(AUTH_TOKEN)"
+	-operator-courier push integreatly-fuse/ $(REPO) integreatly-syndesis $(FUSEONLINE_VERSION) "$(AUTH_TOKEN)"
 
 push/amqonline:
 	operator-courier verify integreatly-amq-online
