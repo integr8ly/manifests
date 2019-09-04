@@ -1,4 +1,4 @@
 packageName: integreatly-syndesis
 channels:
 - name: integreatly
-  currentCSV: syndesisoperator.1.7.0
+  currentCSV: fuse-online-operator.v7.4.0
