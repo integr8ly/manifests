@@ -1,0 +1,5 @@
+channels:
+- currentCSV: mobile-developer-console-operator.v0.2.6
+  name: alpha
+defaultChannel: alpha
+packageName: mobile-developer-console-operator
