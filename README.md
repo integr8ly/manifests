@@ -27,4 +27,4 @@ make push/all
 So be sure you add your components to that and keep the Makefile up to date!
 
 ## Generating a CSV
-To generate a Cluster Service Version (CSV) manifest, from the operator directory run the `operatork-sdk olm-catalog gen-csv` command. For more information, see the operator-sdk CLI reference [here](https://github.com/operator-framework/operator-sdk/blob/master/doc/sdk-cli-reference.md#gen-csv).
+To generate a Cluster Service Version (CSV) manifest, from the operator directory run the `operator-sdk olm-catalog gen-csv` command. For more information, see the operator-sdk CLI reference [here](https://github.com/operator-framework/operator-sdk/blob/master/doc/sdk-cli-reference.md#gen-csv).
