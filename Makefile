@@ -1,5 +1,5 @@
 AMQONLINE_VERSION=0.28.0
-INTEGREATLY_VERSION=1.9.0
+INTEGREATLY_VERSION=1.9.1
 3SCALE_VERSION=1.9.7
 AMQSTREAMS_VERSION=1.1.0
 RHSSO_VERSION=1.8.2
@@ -9,10 +9,11 @@ NEXUS_VERSION=0.9.0
 TUTORIAL_WEB_APP_VERSION=0.0.27
 LAUNCHER_VERSION=0.1.2
 MOBILE_SECURITY_SERVICE_VERSION=0.4.1
+UPS_VERSION=0.2.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service
+push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush
 
 push/integreatly:
 	operator-courier verify integreatly
@@ -57,3 +58,7 @@ push/solution-explorer:
 push/mobile-security-service:
 	operator-courier verify integreatly-mobile-security-service
 	-operator-courier push integreatly-mobile-security-service/ $(REPO) integreatly-mobile-security-service $(MOBILE_SECURITY_SERVICE_VERSION) "$(AUTH_TOKEN)"
+
+push/unifiedpush:
+	operator-courier verify integreatly-unifiedpush
+	-operator-courier push integreatly-unifiedpush/ $(REPO) integreatly-unifiedpush $(UPS_VERSION) "$(AUTH_TOKEN)"
