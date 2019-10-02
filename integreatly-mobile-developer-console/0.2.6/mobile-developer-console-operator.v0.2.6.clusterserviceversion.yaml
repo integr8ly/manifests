@@ -51,7 +51,7 @@ spec:
                 - name: IDM_DOCUMENTATION_URL
                 - name: SYNC_DOCUMENTATION_URL
                 - name: MSS_DOCUMENTATION_URL
-                image: quay.io/aerogear/mobile-developer-console-operator:master
+                image: quay.io/aerogear/mobile-developer-console-operator:0.2.6
                 imagePullPolicy: Always
                 name: mobile-developer-console-operator
                 resources:
