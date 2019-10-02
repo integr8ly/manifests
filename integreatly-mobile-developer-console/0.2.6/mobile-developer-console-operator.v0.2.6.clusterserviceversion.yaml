@@ -1,0 +1,197 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[{"apiVersion":"mdc.aerogear.org/v1alpha1","kind":"MobileDeveloperConsole","metadata":{"name":"example-mdc"},"spec":{"oAuthClientId":"mobile-developer-console","oAuthClientSecret":"foobar"}}]'
+    capabilities: Basic Install
+  name: mobile-developer-console-operator.v0.2.6
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - kind: MobileDeveloperConsole
+      name: mobiledeveloperconsoles.mdc.aerogear.org
+      version: v1alpha1
+      description: Placeholder description
+      displayName: Mobile Developer Console Operator
+  displayName: Mobile Developer Console Operator
+  install:
+    spec:
+      deployments:
+      - name: mobile-developer-console-operator
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              name: mobile-developer-console-operator
+          strategy: {}
+          template:
+            metadata:
+              labels:
+                name: mobile-developer-console-operator
+            spec:
+              containers:
+              - command:
+                - mobile-developer-console-operator
+                env:
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.annotations['olm.targetNamespaces']
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: OPERATOR_NAME
+                  value: mobile-developer-console-operator
+                - name: OPENSHIFT_HOST
+                  value: ${OPENSHIFT_HOST}
+                - name: UPS_DOCUMENTATION_URL
+                - name: IDM_DOCUMENTATION_URL
+                - name: SYNC_DOCUMENTATION_URL
+                - name: MSS_DOCUMENTATION_URL
+                image: quay.io/aerogear/mobile-developer-console-operator:0.2.6
+                imagePullPolicy: Always
+                name: mobile-developer-console-operator
+                resources:
+                  limits:
+                    cpu: 40m
+                    memory: 64Mi
+                  requests:
+                    cpu: 20m
+                    memory: 32Mi
+              serviceAccountName: mobile-developer-console-operator
+      permissions:
+      - rules:
+        - apiGroups:
+          - mdc.aerogear.org
+          resources:
+          - '*'
+          verbs:
+          - get
+          - list
+          - watch
+          - update
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          - services
+          - services/finalizers
+          - serviceaccounts
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - rbac.authorization.k8s.io
+          resources:
+          - rolebindings
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - route.openshift.io
+          resources:
+          - routes
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - image.openshift.io
+          resources:
+          - imagestreams
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - apps.openshift.io
+          resources:
+          - deploymentconfigs
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - apps
+          resources:
+          - replicasets
+          - deployments
+          verbs:
+          - get
+        - apiGroups:
+          - apps
+          resourceNames:
+          - mobile-developer-console-operator
+          resources:
+          - deployments/finalizers
+          verbs:
+          - patch
+          - update
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          - namespaces
+          verbs:
+          - get
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - get
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - monitoring.coreos.com
+          resources:
+          - servicemonitors
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        serviceAccountName: mobile-developer-console-operator
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: true
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  maturity: alpha
+  provider: {}
+  version: 0.2.6

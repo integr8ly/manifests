@@ -8,12 +8,13 @@ FUSEONLINE_VERSION=7.4.0
 NEXUS_VERSION=0.9.0
 TUTORIAL_WEB_APP_VERSION=0.0.27
 LAUNCHER_VERSION=0.1.2
+MOBILE_DEVELOPER_CONSOLE_VERSION=0.2.6
 MOBILE_SECURITY_SERVICE_VERSION=0.4.1
 UPS_VERSION=0.2.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush
+push/all: push/integreatly push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush push/mobile-developer-console
 
 push/integreatly:
 	operator-courier verify integreatly
@@ -54,6 +55,10 @@ push/nexus:
 push/solution-explorer:
 	operator-courier verify integreatly-solution-explorer
 	-operator-courier push integreatly-solution-explorer/ $(REPO) integreatly-solution-explorer $(TUTORIAL_WEB_APP_VERSION) "$(AUTH_TOKEN)"
+
+push/mobile-developer-console:
+	operator-courier verify integreatly-mobile-developer-console
+	-operator-courier push integreatly-mobile-developer-console/ $(REPO) integreatly-mobile-developer-console $(MOBILE_DEVELOPER_CONSOLE_VERSION) "$(AUTH_TOKEN)"
 
 push/mobile-security-service:
 	operator-courier verify integreatly-mobile-security-service
