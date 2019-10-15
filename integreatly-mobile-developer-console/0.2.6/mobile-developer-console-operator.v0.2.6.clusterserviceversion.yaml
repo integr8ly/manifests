@@ -10,11 +10,11 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
-    - kind: MobileDeveloperConsole
+    - description: Placeholder description
+      displayName: Mobile Developer Console Operator
+      kind: MobileDeveloperConsole
       name: mobiledeveloperconsoles.mdc.aerogear.org
       version: v1alpha1
-      description: Placeholder description
-      displayName: Mobile Developer Console Operator
   displayName: Mobile Developer Console Operator
   install:
     spec:
@@ -51,7 +51,7 @@ spec:
                 - name: IDM_DOCUMENTATION_URL
                 - name: SYNC_DOCUMENTATION_URL
                 - name: MSS_DOCUMENTATION_URL
-                image: quay.io/aerogear/mobile-developer-console-operator:0.2.6
+                image: quay.io/aerogear/mobile-developer-console-operator:ae712e3
                 imagePullPolicy: Always
                 name: mobile-developer-console-operator
                 resources:
@@ -91,6 +91,7 @@ spec:
         - apiGroups:
           - rbac.authorization.k8s.io
           resources:
+          - roles
           - rolebindings
           verbs:
           - get
@@ -169,6 +170,44 @@ spec:
           - update
           - patch
           - delete
+        - apiGroups:
+          - ""
+          resources:
+          - secrets
+          - configmaps
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - mdc.aerogear.org
+          resources:
+          - mobileclients
+          verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+        - apiGroups:
+          - push.aerogear.org
+          resources:
+          - pushapplications
+          - androidvariants
+          - iosvariants
+          - webpushvariants
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - mobile-security-service.aerogear.org
+          resources:
+          - mobilesecurityserviceapps
+          verbs:
+          - get
+          - list
+          - watch
         - apiGroups:
           - monitoring.coreos.com
           resources:
