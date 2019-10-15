@@ -20,15 +20,23 @@ spec:
       - kind: MobileSecurityService
         name: mobilesecurityservices.mobile-security-service.aerogear.org
         version: v1alpha1
+        description: Placeholder description
+        displayName: Mobile Security Service
       - kind: MobileSecurityServiceApp
         name: mobilesecurityserviceapps.mobile-security-service.aerogear.org
         version: v1alpha1
+        description: Placeholder description
+        displayName: Mobile Security Service App
       - kind: MobileSecurityServiceBackup
         name: mobilesecurityservicebackups.mobile-security-service.aerogear.org
         version: v1alpha1
+        description: Placeholder description
+        displayName: Mobile Security Service Backup
       - kind: MobileSecurityServiceDB
         name: mobilesecurityservicedbs.mobile-security-service.aerogear.org
         version: v1alpha1
+        description: Placeholder description
+        displayName: Mobile Security Service DB
   description: Placeholder description
   displayName: Mobile Security Service Operator
   icon:
