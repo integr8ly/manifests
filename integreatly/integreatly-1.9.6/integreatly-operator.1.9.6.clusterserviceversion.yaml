@@ -324,14 +324,14 @@ spec:
             # needed to access db and service crs in the mobile-security-service namespace
             - apiGroups:
                 - mobile-security-service.aerogear.org
-                resources:
-                  - '*'
-                verbs:
-                  - get
-                  - list
-                  - watch
-                  - update
-                  - create
+              resources:
+                - '*'
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - create
       permissions:
         - serviceAccountName: integreatly-operator
           rules:
