@@ -11,11 +11,11 @@ spec:
   customresourcedefinitions:
     owned:
     - description: Placeholder description
-      displayName: Mobile Developer Console Operator
+      displayName: Mobile Developer Console
       kind: MobileDeveloperConsole
       name: mobiledeveloperconsoles.mdc.aerogear.org
       version: v1alpha1
-  displayName: Mobile Developer Console Operator
+  displayName: Mobile Developer Console
   install:
     spec:
       deployments:
@@ -51,7 +51,7 @@ spec:
                 - name: IDM_DOCUMENTATION_URL
                 - name: SYNC_DOCUMENTATION_URL
                 - name: MSS_DOCUMENTATION_URL
-                image: quay.io/aerogear/mobile-developer-console-operator:ae712e3
+                image: quay.io/aerogear/mobile-developer-console-operator@sha256:4e38b7bad130e3415f6dc3287679beb0d394855c6bc35144d85cc3e4d7d5a46e
                 imagePullPolicy: Always
                 name: mobile-developer-console-operator
                 resources:
