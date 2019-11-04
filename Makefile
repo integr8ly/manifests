@@ -9,7 +9,7 @@ MOBILE_SECURITY_SERVICE_VERSION=0.4.1
 MONITORING_VERSION=0.0.28
 NEXUS_VERSION=0.9.0
 RHSSO_VERSION=1.9.5
-TUTORIAL_WEB_APP_VERSION=0.0.32
+TUTORIAL_WEB_APP_VERSION=0.0.33
 UPS_VERSION=0.3.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
