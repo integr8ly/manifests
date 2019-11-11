@@ -16,7 +16,7 @@ UPS_VERSION=0.3.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush push/mobile-developer-console push/monitoring push/cloud-resorces
+push/all: push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush push/mobile-developer-console push/monitoring push/cloud-resources
 
 push/monitoring:
 	operator-courier verify integreatly-monitoring
