@@ -1,5 +1,7 @@
 3SCALE_VERSION=1.9.7
 AMQONLINE_VERSION=1.2.2
+CLOUD_RESOURCES_VERSION=0.1.0
+INTEGREATLY_VERSION=1.7.6
 AMQSTREAMS_VERSION=1.1.0
 CODEREADY_VERSION=1.2.2
 FUSEONLINE_VERSION=1.4.0
@@ -14,7 +16,7 @@ UPS_VERSION=0.3.0
 
 AUTH_TOKEN=$(shell curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "$(QUAY_USERNAME)", "password": "${QUAY_PASSWORD}"}}' | jq -r '.token')
 
-push/all: push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush push/mobile-developer-console push/monitoring
+push/all: push/amqstreams push/3scale push/fuse push/rhsso push/codeready push/amqonline push/nexus push/launcher push/solution-explorer push/mobile-security-service push/unifiedpush push/mobile-developer-console push/monitoring push/cloud-resources
 
 push/monitoring:
 	operator-courier verify integreatly-monitoring
@@ -23,6 +25,10 @@ push/monitoring:
 push/amqstreams:
 	operator-courier verify integreatly-amq-streams
 	-operator-courier push integreatly-amq-streams/ $(REPO) integreatly-amq-streams $(AMQSTREAMS_VERSION) "$(AUTH_TOKEN)"
+
+push/cloud-resources:
+	operator-courier verify integreatly-cloud-resources
+	-operator-courier push integreatly-cloud-resources/ $(REPO) integreatly-cloud-resources $(CLOUD_RESOURCES_VERSION) "$(AUTH_TOKEN)"
 
 push/3scale:
 	operator-courier verify integreatly-3scale
